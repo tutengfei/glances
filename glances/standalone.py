@@ -48,7 +48,7 @@ class GlancesStandalone(object):
             logger.debug("Extended stats for top process are enabled")
             glances_processes.enable_extended()
 
-        # Manage optionnal process filter
+        # Manage optional process filter
         if args.process_filter is not None:
             glances_processes.process_filter = args.process_filter
 
@@ -63,7 +63,7 @@ class GlancesStandalone(object):
         except AttributeError:
             pass
 
-        # Initial system informations update
+        # Initial system information update
         self.stats.update()
 
         if self.quiet:
@@ -84,7 +84,7 @@ class GlancesStandalone(object):
     def __serve_forever(self):
         """Main loop for the CLI."""
         while True:
-            # Update system informations
+            # Update system information
             self.stats.update()
 
             if not self.quiet:
