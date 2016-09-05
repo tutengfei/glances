@@ -165,6 +165,8 @@ Start the client browser (browser mode):\n\
                             dest='export_rabbitmq', help='export stats to rabbitmq broker (pika lib needed)')
         parser.add_argument('--export-riemann', action='store_true', default=False,
                             dest='export_riemann', help='export stats to riemann broker (bernhard lib needed)')
+        parser.add_argument('--export-mongodb', action='store_true', default=False,
+                            dest='export_mongodb', help='export stats to Mongodb server (PyMongo lib needed)')
         # Client/Server option
         parser.add_argument('-c', '--client', dest='client',
                             help='connect to a Glances server by IPv4/IPv6 address or hostname')
@@ -322,7 +324,10 @@ Start the client browser (browser mode):\n\
         self.args = args
 
         # Export is only available in standalone or client mode (issue #614)
-        export_tag = args.export_csv or args.export_elasticsearch or args.export_statsd or args.export_influxdb or args.export_opentsdb or args.export_rabbitmq
+        export_tag = (args.export_csv or args.export_elasticsearch or args.export_statsd
+                     or args.export_influxdb or args.export_opentsdb
+                     or args.export_rabbitmq or args.export_mongodb)
+
         if not (self.is_standalone() or self.is_client()) and export_tag:
             logger.critical("Export is only available in standalone or client mode")
             sys.exit(2)
