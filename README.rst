@@ -51,7 +51,7 @@ Optional dependencies:
 - ``matplotlib`` (for graphical/chart support)
 - ``pika`` (for the RabbitMQ/ActiveMQ export module)
 - ``bernhard`` (for the Riemann export module)
-- ``PyMongo`` (for the MongoDB module)
+- ``PyMongo`` (for the MongoDB export module)
 - ``py-cpuinfo`` (for the Quicklook CPU info module)
 - ``scandir`` (for the Folders plugin) [Only for Python < 3.5]
 
